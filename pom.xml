@@ -13,16 +13,19 @@
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-services</artifactId>
             <version>15.0.2</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-server-spi-private</artifactId>
             <version>15.0.2</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-server-spi</artifactId>
             <version>15.0.2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -30,5 +33,21 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-jar-plugin</artifactId>
+               <configuration>
+                   <archive>
+                       <manifestEntries>
+                           <Dependencies>org.keycloak.keycloak-services</Dependencies>
+                       </manifestEntries>
+                   </archive>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
 
 </project>
